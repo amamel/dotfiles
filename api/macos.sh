@@ -351,23 +351,28 @@ echo
 echo "Installing packages and binaries..."
 echo
 
-
 packages_to_install=(
+    bash-completion
     coreutils --with-gmp
+    docker-compose
     findutils --with-default-names
     moreutils
     osxutils
     bat
     bpytop
-    docker
     git
     git-lfs
+    go
     htop
     httpie
+    jq
     neofetch
     nmap
     node
     npm
+    pup
+    python3
+    recode
     stow
     tig
     tmux
@@ -486,7 +491,7 @@ casks_to_install=(
     iota-wallet
     ledger-live
     licecap
-    local-by-flywheel
+    #local-by-flywheel
     macvim
     micro-snitch
     nault
@@ -494,8 +499,8 @@ casks_to_install=(
     openemu
     overdrive-media-console
     plex-media-server
-    postgres
-    postico
+    #postgres
+    #postico
     protonvpn
     sequel-pro
     shortcat
@@ -519,11 +524,17 @@ clear
 # Brew cleanup
 brew update && brew upgrade brew-cask && brew cleanup && brew cask cleanup
 
+# Install tuxi
+sudo curl -sL "https://raw.githubusercontent.com/Bugswriter/tuxi/main/tuxi" -o /usr/local/bin/tuxi
+sudo chmod +x /usr/local/bin/tuxi
+
 # Install oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 # Install oh my zsh packages
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
 # Install pure theme for ZSH
 npm install --global pure-prompt
 

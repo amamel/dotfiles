@@ -2,6 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 export NPM_PACKAGES="$HOME/.npm-packages"
 export PATH="$NPM_PACKAGES/bin:$PATH"
+export PATH="$HOME/.tuxi/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
@@ -21,3 +22,5 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 alias zshreload="source ~/.zshrc"
+alias zshconfig="mate ~/.zshrc"
+alias ohmyzsh="mate ~/.oh-my-zsh"

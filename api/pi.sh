@@ -15,6 +15,7 @@ packages=(
   fail2ban
   htop
   iftop
+  jq
   make
   nodejs
   npm
@@ -22,9 +23,11 @@ packages=(
   nmap
   neofetch
   openssl
+  pup
   python3
   rbenv
   reattach-to-user-namespace
+  recode
   stow
   tor
   tmate
@@ -39,6 +42,10 @@ packages=(
   zsh
 )
 sudo apt-get install -yqq "${packages[@]}"
+
+# Install tuxi
+sudo curl -sL "https://raw.githubusercontent.com/Bugswriter/tuxi/main/tuxi" -o /usr/local/bin/tuxi
+sudo chmod +x /usr/local/bin/tuxi
 
 # Symlink dotfiles
 stow git tmux vim
