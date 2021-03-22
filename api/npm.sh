@@ -39,7 +39,7 @@ packages=(
   sitespeed.io
   speed-test
   vtop
-  vue
+  vue-cli
   yarn
 )
 echo '

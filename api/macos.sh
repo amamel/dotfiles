@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 # Get dotfiles directory to (so run this script from anywhere)
 export DOTFILES_DIR
@@ -9,19 +9,93 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 clear
 
-echo "system .dotfiles automation"
-echo "Administrator password required to run script"
-echo "Note: You may be asked to input your password again during the installation"
-echo
+###############################################################################
+# ERROR: Let the user know if the script fails
+###############################################################################
 
-# Update macOS and install xcode
-sudo -v
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-clear # clear the screen
+trap 'ret=$?; test $ret -ne 0 && printf "\n   \e[31m\033[0m  Script failed  \e[31m\033[0m\n" >&2; exit $ret' EXIT
 
-sudo softwareupdate -i -a
-xcode-select --install
+set -e
 
+###############################################################################
+# Release the hounds
+###############################################################################
+printf "
+_________       _____ _____________ ______              
+______  /______ __  /____  __/___(_)___  /_____ ________
+_  __  / _  __ \_  __/__  /_  __  / __  / _  _ \__  ___/
+/ /_/ /  / /_/ // /_  _  __/  _  /  _  /  /  __/_(__  ) 
+\__,_/   \____/ \__/  /_/     /_/   /_/   \___/ /____/  
+╭───────────────────────────────────────────────────╮
+│ ${bold}System dotfiles automation${normal}.       │
+│───────────────────────────────────────────────────│
+│  Safe to run multiple times on the same machine.  │
+│  It ${green}installs${reset}, ${blue}upgrades${reset}, or ${yellow}skips${reset} packages based   │
+│  on what is already installed on the machine.     │
+╰───────────────────────────────────────────────────╯
+   ${dim}$(get_os) $(get_os_version) ${normal} // ${dim}$BASH ${normal} // ${dim}$BASH_VERSION${reset}
+"
+
+###############################################################################
+# CHECK: Internet
+###############################################################################
+echo "Checking internet connection…"
+check_internet_connection
+
+###############################################################################
+# PROMPT: Password
+###############################################################################
+echo "Caching password…"
+ask_for_sudo
+
+###############################################################################
+# PROMPT: SSH Key
+###############################################################################
+echo "Checking for SSH key…"
+ssh_key_setup
+
+
+###############################################################################
+# INSTALL: Dependencies
+###############################################################################
+echo "Installing Dependencies…"
+
+# -----------------------------------------------------------------------------
+# XCode
+# -----------------------------------------------------------------------------
+install_xcode () {
+if type xcode-select >&- && xpath=$( xcode-select --print-path ) &&
+	test -d "${xpath}" && test -x "${xpath}" ; then
+	print_success_muted "Xcode already installed. Skipping."
+else
+	step "Installing Xcode…"
+	xcode-select --install
+	print_success "Xcode installed!"
+fi
+
+if [ ! -d "$HOME/.bin/" ]; then
+	mkdir "$HOME/.bin"
+fi
+}
+# -----------------------------------------------------------------------------
+# NVM
+# -----------------------------------------------------------------------------
+
+install_nvm () {
+if [ -x nvm ]; then
+	step "Installing NVM…"
+	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+	print_success "NVM installed!"
+	step "Installing latest Node…"
+	nvm install node
+	nvm use node
+	nvm run node --version
+	nodev=$(node -v)
+	print_success "Using Node $nodev!"
+else
+	print_success_muted "NVM/Node already installed. Skipping."
+fi
+}
 
 ###############################################################################
 # Install Homebrew, Git and tools we need for running dotfiles.
@@ -53,21 +127,29 @@ cleanup_homebrew() {
     rm -f -r /Library/Caches/Homebrew/* # Delete installation cache files
 }
 
-update_dotiles() {
+
+
+update_dotfiles() {
     [ -d "$DOTFILES_DIR/.git" ] && git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master
 }
+
+echo "=> Install Xcode"
+install_xcode
 
 echo "=> Install Homebrew, Git and tools we need for running dotfiles."
 install_setup
 
-echo "=> Update Homebrew formulas"
+echo "=> Updating Homebrew formulae…"
 update_homebrew
 
 echo "=> Cleanup Homebrew cache and remove installation files"
 cleanup_homebrew
 
+echo "=> Install NVM"
+install_nvm
+
 echo "=> Update dotfiles repository itself."
-update_dotiles
+update_dotfiles
 
 clear # clear the screen
 
@@ -151,6 +233,26 @@ sudo pmset -a displaysleep 15
 sudo pmset -c sleep 0
 # Set machine sleep to 5 minutes on battery
 sudo pmset -b sleep 5
+
+###############################################################################
+# Directories
+###############################################################################
+
+DIRECTORIES=(
+    $HOME/design
+    $HOME/github
+    $HOME/sync
+    $HOME/GIFs
+    $HOME/Desktop/projects
+    $HOME/Desktop/temp
+)
+
+step "Making directories…"
+for dir in ${DIRECTORIES[@]}; do
+    mkd $dir
+done
+
+
 
 ###############################################################################
 # Screen
@@ -352,6 +454,7 @@ echo "Installing packages and binaries..."
 echo
 
 packages_to_install=(
+    ack
     bash-completion
     coreutils --with-gmp
     docker-compose
@@ -360,6 +463,7 @@ packages_to_install=(
     osxutils
     bat
     bpytop
+    gh
     git
     git-lfs
     go
@@ -368,16 +472,17 @@ packages_to_install=(
     jq
     neofetch
     nmap
-    node
     npm
     pup
     python3
     recode
+    rust
     stow
     tig
     tmux
     tree
     vim --with-lu --override-system-vi
+    wget
     yarn
     z
     zsh
@@ -469,6 +574,7 @@ casks_to_install=(
     cheatsheet
     clipmenu
     daisydisk
+    dash
     docker
     docker-toolbox
     dropbox
@@ -509,8 +615,10 @@ casks_to_install=(
     spectacle
     spotify
     steam
+    tor-browser
     transmit
     tuxera-ntfs
+    veracrypt
     #xld
     zoom
 )
@@ -523,6 +631,14 @@ clear
 
 # Brew cleanup
 brew update && brew upgrade brew-cask && brew cleanup && brew cask cleanup
+
+###############################################################################
+# INSTALL: npm packages
+###############################################################################
+source ./api/npm.sh
+
+
+cargo install ttyper
 
 # Install tuxi
 sudo curl -sL "https://raw.githubusercontent.com/Bugswriter/tuxi/main/tuxi" -o /usr/local/bin/tuxi
