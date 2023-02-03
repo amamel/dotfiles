@@ -1,0 +1,49 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.aliases:
+    ~/.bashrc:
+    ~/.bash_profile:
+    ~/.functions:
+    ~/.mackup.cfg:
+    ~/.zshrc:
+    ~/.zshenv:
+    ~/.oh-my-zsh:
+    ~/.gitconfig:
+    ~/.gitignore:
+    ~/.rbenv:
+    ~/.tmux.conf:
+    ~/.tuxi:
+    ~/.vim: vim/.vim
+    ~/.vimrc: vim/.vimrc
+
+- create:
+    - ~/GitHub
+	- ~/Local Sites
+	- ~/Pictures/Screenshots
+
+- shell:
+    - command: ./scripts/setup_init.zsh
+      stdin: true
+      stdout: true
+      stderr: true
+    - command: ./scripts/setup_homebrew.zsh
+      stdin: true
+      stdout: true
+      stderr: true
+    - command: ./scripts/setup_zsh.zsh
+      stdin: true
+      stdout: true
+      stderr: true
+    - command: ./scripts/setup_node.zsh
+      stdin: true
+      stdout: true
+      stderr: true
+    - command: ./scripts/setup_macos.zsh
+      stdin: true
+      stdout: true
+      stderr: true

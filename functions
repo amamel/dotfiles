@@ -1,0 +1,32 @@
+function determine_shell() {
+    SHELL="echo ${0}"
+}
+
+function mkcd() {
+  mkdir -p "$@" && cd "$_";
+}
+
+function determine_OS() {
+    case "$OSTYPE" in
+        solaris*) OS="SOLARIS" ;;
+        darwin*)  OS="OSX" ;;
+        linux*)   OS="LINUX" ;;
+        bsd*)     OS="BSD" ;;
+        msys*)    OS="WINDOWS" ;;
+        *)        OS="unknown: $OSTYPE" ;;
+    esac
+    export OS
+}
+
+function update() {
+    determine_OS()
+    if [[ $OS == "OSX" ]]; then
+        sudo softwareupdate -i -a
+        brew upgrade
+        brew update
+        brew cleanup
+        npm update -g
+    elif [[ $OS == "LINUX" ]]; then
+        echo "OS is Linux. TODO"
+    fi
+}

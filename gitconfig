@@ -1,0 +1,16 @@
+[user]
+	name = Alex Mamel
+	email = 1643277+amamel@users.noreply.github.com
+[core]
+	editor = nano
+
+[color]
+  ui = always
+  branch = always
+  diff = always
+  interactive = always
+  status = always
+  grep = always
+  pager = true
+  decorate = always
+  showbranch = always

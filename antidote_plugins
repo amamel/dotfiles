@@ -1,0 +1,33 @@
+# .zsh_plugins
+
+rupa/z
+zsh-users/zsh-completions
+
+# frameworks like oh-my-zzsh are supported
+ohmyzsh/ohmyzsh path:lib
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+ohmyzsh/ohmyzsh path:plugins/magic-enter
+
+caarlos0/ports kind:path
+caarlos0/zsh-git-fetch-merge kind:path
+caarlos0/zsh-git-sync kind:path
+caarlos0/zsh-mkc
+caarlos0/zsh-open-pr kind:path
+caarlos0/jvm
+mafredri/zsh-async
+
+# populaar fish-like plugins
+mattmc3/zfunctions
+zsh-users/zsh-autosuggestions
+
+# these should be last
+sindresorhus/pure
+zdharma/history-search-multi-word
+zdharma-continuum/fast-syntax-highlighting kind:defer
+denysdovhan/spaceship-prompt
+# This plugin might need to be the last one.
+# https://github.com/zsh-users/zsh-history-substring-search#usage
+# If you want to use zsh-syntax-highlighting along
+# with this script, then make sure that you load it
+# before you load this script:
+zsh-users/zsh-history-substring-search
