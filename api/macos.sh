@@ -308,12 +308,6 @@ sudo pmset -a sms 0
 # Finder
 ###############################################################################
 
-# Finder: show all filename extensions
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-
-# Finder: show path bar
-defaults write com.apple.finder ShowPathbar -bool true
-
 # When performing a search, search the current folder by default
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
@@ -420,6 +414,15 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
 
+
+###############################################################################
+# Chrome
+###############################################################################
+
+# Prevent left and right swipe through history in Chrome
+defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+
+
 ###############################################################################
 # Address Book, Dashboard, iCal, TextEdit, and Disk Utility                   #
 ###############################################################################
@@ -456,36 +459,55 @@ echo
 packages_to_install=(
     ack
     bash-completion
+    bash-snippets
+    broot 
+    calcurse
+    chkrootkit
+    cointop
     coreutils --with-gmp
+    ctop
+    ddgr
     docker-compose
     findutils --with-default-names
     moreutils
     osxutils
     bat
     bpytop
+    fd
+    fzf
     gh
     git
     git-lfs
+    glances
     go
     htop
     httpie
+    ideviceinstaller ios-deploy cocoapods
     jq
+    lazydocker
+    --HEAD libimobiledevice
+    mas
     neofetch
     nmap
-    npm
     pup
+    pyenv
     python3
+    ranger
+    rbenv
     recode
+    ripgrep
     rust
+    starship
     stow
     tig
+    tldr
     tmux
     tree
     vim --with-lu --override-system-vi
     wget
     yarn
     z
-    zsh
+    zoxide
 )
 brew install "${packages_to_install[@]}"
 
@@ -536,98 +558,136 @@ echo
 tap homebrew/cask-versions
 
 casks_to_install=(
-    homebrew/cask-versions/1password-beta
-    homebrew/cask-versions/alfred3
-    homebrew/cask-versions/arduino-nightly
-    homebrew/cask-versions/arq5
+
     homebrew/cask-versions/brave-browser-nightly
-    homebrew/cask-versions/calibre4
     homebrew/cask-versions/firefox-nightly
-    homebrew/cask-versions/google-chrome-canary
-    homebrew/cask-versions/gpg-suite-nightly
-    homebrew/cask-versions/hyper-canary
+    #homebrew/cask-versions/google-chrome-canary
     homebrew/cask-versions/iterm2-nightly
-    homebrew/cask-versions/kitematic0176
-    homebrew/cask-versions/little-snitch4
     homebrew/cask-versions/signal-beta
-    homebrew/cask-versions/slack-beta
     homebrew/cask-versions/sublime-text-dev
-    homebrew/cask-versions/telegram-desktop-dev
-    #homebrew/cask-versions/transmission-nightly
+    #homebrew/cask-versions/telegram-desktop-beta
+    homebrew/cask-versions/transmission-nightly
     homebrew/cask-versions/visual-studio-code-insiders
     homebrew/cask-versions/vlc-nightly
-    1password-cli
+    #1password
+    #1password-cli
     adobe-creative-cloud
     adobe-digital-editions
     adobe-dng-converter
+    alfred
     #android-file-transfer
+    android-sdk
+    android-studio
     #anki
     anvil
+    arq
     automute
     #axure-rp
     balenaetcher
     bartender
     battle-net
-    #binance
+    binance
     boxer
     caffeine
+    calibre
     cheatsheet
+    cityofzion-neon
     clipmenu
     daisydisk
     dash
     docker
-    docker-toolbox
     dropbox
     eve
-    exodus
+    #exodus
     figma
+    firefly
+    flutter
     flux
-    folding-at-home
+    #folding-at-home
     github-desktop
     #gitter
     #google-backup-and-sync
+    gpg-suite
     gyazo
     hazel
-    heroku update
-    heroku-toolbelt
     imagealpha
     imageoptim
     #imazing
     install-disk-creator
-    iota-wallet
+    kitematic
     ledger-live
     licecap
-    #local-by-flywheel
+    little-snitch
+    local
+    macfuse #needed for veracrypt
     macvim
     micro-snitch
+    #microsoft-office
+    #microsoft-outlook
     nault
     #notion
     openemu
     overdrive-media-console
     plex-media-server
     #postgres
-    #postico
+    postico
+    postman
     protonvpn
+    raspberry-pi-imager
+    #slack
     sequel-pro
     shortcat
+    shottr
     sia-ui
     sip
     spectacle
     spotify
-    steam
-    tor-browser
+    #steam
+    thonny
     transmit
-    tuxera-ntfs
+    #tuxera-ntfs
     veracrypt
     #xld
     zoom
+
 )
-brew cask install "${casks_to_install[@]}"
+brew install --cask "${casks_to_install[@]}"
 
 echo
 echo "Casks successfully installed!"
 echo
 clear
+
+
+# Install quicklook casks
+
+echo
+echo "Installing Quicklook plugins..."
+echo
+
+quicklook_casks_to_install=(
+ePub-quicklook
+EPSQLPlugIn
+BetterZipQL
+qlmarkdown
+qlMoviePreview
+qlstephen
+QLTorrent
+qlvideo
+qlwoff
+QuickNFO
+QuickJSON
+syntax-highlight
+WebPQuickLook
+
+)
+brew install --cask --no-quarantine "${quicklook_casks_to_install[@]}"
+
+echo
+echo "Quicklook plugins successfully installed!"
+echo
+clear
+
 
 # Brew cleanup
 brew update && brew upgrade brew-cask && brew cleanup && brew cask cleanup

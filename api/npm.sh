@@ -30,7 +30,7 @@ packages=(
   jets
   jshint
   localtunnel
-  modernizr
+  mapscii
   n
   nativescript
   parker

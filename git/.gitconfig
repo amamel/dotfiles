@@ -1,44 +1,52 @@
-[core]
-  editor = vim
-  pager = less -F -X
+[user]
+  name    = Firstname Lastname
+  email   = you@example.com
+[github]
+  user    = username
 
 [alias]
-  a = add
-  b = branch
-  bd = branch -d
-  c = commit -m
-  ca = commit --amend
-  cfd = clean -fd
-  ch = checkout
-  d = diff
-  ds = diff --staged
-  f = fetch --all
-  l = log --relative-date --graph --abbrev-commit -10
-  ll = log --relative-date --graph --abbrev-commit
-  p = push
-  pf = push -f
-  r = rebase
-  ra = rebase --abort
-  rc = rebase --continue
-  ri = rebase -i
-  rh = reset --hard
-  s = status -s
+  a       = add
+  b       = branch
+  bd      = branch -d
+  ca      = commit -a
+  cam     = commit -am
+  cm      = commit -m
+  cfd     = clean -fd
+  co      = checkout
+  cob     = checkout -b
+  d       = diff
+  ds      = diff --staged
+  f       = fetch --all
+  fp      = fetch --prune --all
+  l       = log --oneline --decorate --graph
+  lall    = log --oneline --decorate --graph --all
+  ls      = log --oneline --decorate --graph --stat
+  lt      = log --graph --decorate --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset'
+  p       = push
+  pom     = push origin master
+  pog     = push origin gh-pages
+  puom    = pull origin master
+  puog    = pull origin gh-pages
+  pf      = push -f
+  r       = rebase
+  ra      = rebase --abort
+  rc      = rebase --continue
+  ri      = rebase -i
+  rh      = reset --hard
+  s       = status -s
   remotes = remote -v
-  go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
-
-[format]
-  pretty = format:%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s
+  go      = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
 [color]
-  ui = always
-  branch = always
-  diff = always
+  ui          = always
+  branch      = always
+  diff        = always
   interactive = always
-  status = always
-  grep = always
-  pager = true
-  decorate = always
-  showbranch = always
+  status      = always
+  grep        = always
+  pager       = true
+  decorate    = always
+  showbranch  = always
 
 [include]
-  path = ~/.gitconfig.local
+  path        = ~/.gitconfig.local

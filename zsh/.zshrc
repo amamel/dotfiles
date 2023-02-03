@@ -4,7 +4,17 @@ export NPM_PACKAGES="$HOME/.npm-packages"
 export PATH="$NPM_PACKAGES/bin:$PATH"
 export PATH="$HOME/.tuxi/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
+
+export PATH="$HOME/GitHub/flutter/bin:$PATH"
+
+export ANDROID_HOME=/Users/amamel/Library/Android/sdk 
+export PATH="$ANDROID_HOME/tools:$PATH"
+export PATH="$ANDROID_HOME/tools/bin:$PATH"
+export PATH="$ANDROID_HOME/platform-tools:$PATH"
+
+
 eval "$(rbenv init -)"
+eval "$(starship init zsh)"
 
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=1
