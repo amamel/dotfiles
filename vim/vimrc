@@ -1,0 +1,27 @@
+set encoding=utf-8
+
+" Enable true colors if available
+set termguicolors
+colorscheme gruvbox
+" Enable italics, Make sure this is immediately after colorscheme
+" https://stackoverflow.com/questions/3494435/vimrc-make-comments-italic
+highlight Comment cterm=italic gui=italic
+
+" General
+syntax on
+set number
+set ruler
+set visualbell
+set showmatch
+
+set autoindent
+set shiftwidth=4
+set smartindent
+set smarttab
+set softtabstop=4
+
+" Search
+set hlsearch
+set smartcase
+set ignorecase
+set incsearch

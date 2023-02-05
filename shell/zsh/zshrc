@@ -4,8 +4,20 @@ export DOTFILES="$HOME/.dotfiles"
 export HOMEBREW_BUNDLE_FILE="$DOTFILES/Brewfile"
 export UPDATE_ZSH_DAYS=1
 
+# Path to oh-my-zsh installation
+export ZSH="$HOME/.oh-my-zsh"
+
 # Change ZSH Options
-ZSH_THEME="agnoster"
+ZSH_THEME="clean-minimal"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git z docker docker-compose)
+
+
+source $ZSH/oh-my-zsh.sh
 
 # Adjust History Variables & Options
 [[ -z $HISTFILE ]] && HISTFILE="$HOME/.zsh_history"
@@ -34,7 +46,7 @@ alias rm=trash
 alias man=batman
 alias bbd='brew bundle dump --force --describe'
 # Load history into shell (shareHistory alternative)
-alias lh='fc -RI; echo "loaded and showing..."; history;' 
+alias lh='fc -RI; echo "loaded and showing..."; history;'
 alias cd..='cd ..'
 alias cd.....='cd ../../'
 alias up='cd ../'

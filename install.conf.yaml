@@ -5,45 +5,53 @@
 - clean: ['~']
 
 - link:
-    ~/.aliases:
-    ~/.bashrc:
-    ~/.bash_profile:
-    ~/.functions:
+    ~/.aliases: shell/aliases
+    ~/.bashrc: shell/bash/bashrc
+    ~/.bash_profile: shell/bash/bash_profile
+	~/.editorconfig:
+    ~/.functions: shell/functions
     ~/.mackup.cfg:
+	~/.nanorc: shell/nanorc
     ~/.zshrc:
-    ~/.zshenv:
-    ~/.oh-my-zsh:
+		path: zsh/zshrc
+		force: true
+    ~/.zshenv: shell/zsh/zshenv
+    ~/.oh-my-zsh: shell/zsh/oh-my-zsh
     ~/.gitconfig:
     ~/.gitignore:
     ~/.rbenv:
-    ~/.tmux.conf:
-    ~/.tuxi:
-    ~/.vim: vim/.vim
-    ~/.vimrc: vim/.vimrc
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.vimrc: vim/vimrc
 
 - create:
-    - ~/GitHub
-	- ~/Local Sites
-	- ~/Pictures/Screenshots
+	- ~/design
+	#- ~/downloads/audiob
+	#- ~/downloads/epub
+	#- ~/downloads/torrent
+	#- ~/downloads/tv
+    - ~/github
+	- ~/local sites
+	- ~/pictures/screenshots
+	- ~/vm
 
 - shell:
-    - command: ./scripts/setup_init.zsh
+    - command: ./scripts/1-setup_init.zsh
       stdin: true
       stdout: true
       stderr: true
-    - command: ./scripts/setup_homebrew.zsh
+    - command: ./scripts/2-setup_homebrew.zsh
       stdin: true
       stdout: true
       stderr: true
-    - command: ./scripts/setup_zsh.zsh
+    - command: ./scripts/3-setup_zsh.zsh
       stdin: true
       stdout: true
       stderr: true
-    - command: ./scripts/setup_node.zsh
+    - command: ./scripts/4-setup_node.zsh
       stdin: true
       stdout: true
       stderr: true
-    - command: ./scripts/setup_macos.zsh
+    - command: ./scripts/5-setup_macos.zsh
       stdin: true
       stdout: true
       stderr: true

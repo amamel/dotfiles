@@ -48,6 +48,7 @@ packages=(
   jshint
   localtunnel
   @googlemaps/google-maps-services-js
+  meteor --save react react-dom
   n
   nativescript
   parker

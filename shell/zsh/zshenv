@@ -1,0 +1,53 @@
+# Homebrew
+export HOMEBREW_CASK_OPTS="--no-quarantine --no-binaries"
+
+# Manage Node with n
+export N_PREFIX="$HOME/.n"
+export PREFIX="$N_PREFIX"
+
+# Npm Packages
+export NPM_PACKAGES="$HOME/.npm-packages"
+export PATH="$NPM_PACKAGES/bin:$PATH"
+
+#export PATH="$HOME/flutter/bin:$PATH"
+#export PATH="$HOME/.dotnet/tools:$PATH"
+
+#export ANDROID_HOME=/Users/amamel/Library/Android/sdk
+#export ANDROID_NDK_HOME=/usr/local/share/android-ndk
+
+# User configuration
+export PATH="$PATH:/usr/local/mysql/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+# to use mysql command from terminal
+export PATH="/usr/local/mysql/bin:$PATH"
+
+# Export colors for tmux
+export TERM=xterm-256color
+export PATH="/usr/local/sbin:$PATH"
+
+#export PATH="$ANDROID_HOME/tools:$PATH"
+#export PATH="$ANDROID_HOME/tools/bin:$PATH"
+#export PATH="$ANDROID_HOME/platform-tools:$PATH"
+
+# Takes ~100ms
+# Load rbenv automatically by appending
+# the following to ~/.zshrc:
+eval "$(rbenv init -)"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/bin:$PATH"
+export PATH="$PATH:/Users/$USER/Library/Python/2.7/bin"
+export PATH="$PATH:/Users/$USER/Library/Python/3.7/bin"
+export PATH="$PATH"
+
+function exists() {
+  # `command -v` is similar to `which`
+  # https://stackoverflow.com/a/677212/1341838
+  command -v $1 >/dev/null 2>&1
+
+  # More explicitly written:
+  # command -v $1 1>/dev/null 2>/dev/null
+}
