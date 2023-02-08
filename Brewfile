@@ -21,9 +21,10 @@ brew "cointop"
 brew "coreutils"
 brew "ctop"
 brew "ddgr"
-brew "docker", link: false
-brew "docker-compose", link: false
+brew "docker"
+brew "docker-compose"
 brew "diff-so-fancy"
+brew "elinks"
 brew "exa"
 brew "fd"
 brew "findutils"
@@ -47,7 +48,7 @@ brew "nano"
 brew "neofetch"
 brew "neovim"
 brew "npm"
-brew "openssl@1.1"
+brew "openssl"
 brew "osxutils"
 brew "pup"
 brew "pyenv"
@@ -72,6 +73,7 @@ brew "vim"
 brew "webp"
 brew "weechat"
 brew "wget"
+brew "wv"
 brew "yarn"
 brew "youtube-dl"
 brew "z"
@@ -83,7 +85,12 @@ brew "zsh-completions"
 cask "font-atkinson-hyperlegible"
 cask "font-cascadia-code"
 cask "font-fira-code"
+cask "font-fira-mono-for-powerline"
 cask "font-inconsolata-dz"
+cask "font-inconsolata-dz-for-powerline"
+cask "font-inconsolata-for-powerline"
+cask "font-inconsolata-g"
+cask "font-inconsolata-g-for-powerline"
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-open-sans"
@@ -98,7 +105,7 @@ cask "font-source-code-pro"
 #cask "adobe-dng-converter"
 #cask "android-file-transfer"
 #cask "anki"
-#cask "bartender" 				# dozer open src alt below
+#cask "bartender"				# dozer open src alt below
 #cask "battle-net"
 #cask "calibre"
 #cask "cityofzion-neon"
@@ -168,7 +175,7 @@ cask "install-disk-creator"
 cask "iterm2-nightly"
 cask "licecap"
 cask "local" #WordPress local development tool by Flywheel
-cask "macfuse" #needed for veracrypt
+cask "macfuse" #Required for veracrypt
 cask "macvim"
 cask "micro-snitch"
 cask "raspberry-pi-imager"
@@ -208,11 +215,16 @@ cask "quicklookase"
 cask "quicknfo"
 cask "syntax-highlight"
 cask "webpquicklook"
-mas "Amphetamine", id: 937984704
-mas "iAWriter", id: 775737590
-mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Strongbox", id: 897283731
-mas "Tampermonkey", id: 1482490089
-mas "Xcode", id: 497799835
+
+# Mac App Store Applications (Disabled by default)
+#mas "Amphetamine", id: 937984704
+#mas "Coin Tick", id: 1141688067
+#mas "Dropover", id: 1355679052
+#mas "iAWriter", id: 775737590
+#mas "Keynote", id: 409183694
+#mas "Magnet", id: 441258766
+#mas "Numbers", id: 409203825
+#mas "Pages", id: 409201541
+#mas "Strongbox", id: 897283731
+#mas "Tampermonkey", id: 1482490089
+#mas "Xcode", id: 497799835

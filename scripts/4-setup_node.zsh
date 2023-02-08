@@ -55,6 +55,7 @@ packages=(
   postcss
   react
   sitespeed.io
+  spoof
   speed-test
   vtop
   vue-cli

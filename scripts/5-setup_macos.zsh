@@ -610,6 +610,32 @@ defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/.dotfiles/iterm2"
 defaults write com.googlecode.iterm2 NoSyncNeverRemindPrefsChangesLostForFile -bool true
 
+###############################################################################
+# Security
+###############################################################################
+echo ""
+echo "› Security:"
+
+echo "  › Configure Spoof Mac to run @ startup"
+echo "  › Download the startup file for launchd"
+curl https://raw.githubusercontent.com/feross/SpoofMAC/master/misc/local.macspoof.plist > local.macspoof.plist
+
+echo "  › Customize location of `spoof-mac.py` to match your system"
+cat local.macspoof.plist | sed "s|/usr/local/bin/spoof-mac.py|`which spoof-mac.py`|" | tee local.macspoof.plist
+
+echo "  › Copy file to the OS X launchd folder"
+sudo cp local.macspoof.plist /Library/LaunchDaemons
+
+echo "  › Set file permissions"
+cd /Library/LaunchDaemons
+sudo chown root:wheel local.macspoof.plist
+sudo chmod 0644 local.macspoof.plist
+echo "  › Done"
+
+# By default, the above will randomize your MAC address on computer startup.
+# You can change the command that gets run at startup by editing the local.macspoof.plist file.
+# sudo vim /Library/LaunchDaemons/local.macspoof.plist
+
 echo
 echo "OSX defaults successfully set!"
 echo
