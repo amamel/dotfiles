@@ -2,32 +2,29 @@
 
 echo "\n<<< Starting ZSH Setup >>>\n"
 
-# Installation unnecessary; it's in the Brewfile.
+# No installation necessary; assuming it's already in Brewfile.
 
-# https://stackoverflow.com/a/4749368/1341838
+# Checking if '/usr/local/bin/zsh' is already present in '/etc/shells'.
 if grep -Fxq '/usr/local/bin/zsh' '/etc/shells'; then
-  echo '/usr/local/bin/zsh already exists in /etc/shells'
+  echo '/usr/local/bin/zsh' is already in '/etc/shells'.
 else
   echo "Enter superuser (sudo) password to edit /etc/shells"
   echo '/usr/local/bin/zsh' | sudo tee -a '/etc/shells' >/dev/null
 fi
 
-
+# Checking if the current shell is already set to '/usr/local/bin/zsh'.
 if [ "$SHELL" = '/usr/local/bin/zsh' ]; then
-  echo '$SHELL is already /usr/local/bin/zsh'
+  echo '$SHELL is already set to /usr/local/bin/zsh'
 else
   echo "Enter user password to change login shell"
   chsh -s '/usr/local/bin/zsh'
 fi
 
-
-if sh --version | grep -q zsh; then
-  echo '/private/var/select/sh already linked to /bin/zsh'
+# Checking if '/private/var/select/sh' is already linked to '/bin/zsh'.
+if [[ -L /private/var/select/sh && $(readlink /private/var/select/sh) = '/bin/zsh' ]]; then
+  echo '/private/var/select/sh' is already linked to '/bin/zsh'
 else
   echo "Enter superuser (sudo) password to symlink sh to zsh"
-  # Looked cute, might delete later, idk
+  # Creating a symbolic link from '/bin/zsh' to '/private/var/select/sh'.
   sudo ln -sfv /bin/zsh /private/var/select/sh
-
-  # I'd like for this to work instead.
-  # sudo ln -sfv /usr/local/bin/zsh /private/var/select/sh
 fi

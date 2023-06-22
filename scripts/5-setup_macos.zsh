@@ -1,22 +1,23 @@
 #!/usr/bin/env zsh
 
-#Make sure this is a mac and bail out if not
-
+# Check if this is a macOS environment; exit if not
 case $OSTYPE in
   darwin* ) echo "\n<<< Starting macOS Setup >>>\n";;
-  * ) echo "This is not a mac - moving on." ; exit 0 ;;
+  * ) echo "This is not a macOS environment - moving on."; exit 0 ;;
 esac
 
-# Close any open System Preferences panes, to prevent them from overriding
-# settings we’re about to change
+# Close any open System Preferences panes to prevent them from overriding settings
 osascript -e 'tell application "System Preferences" to quit'
 
-
 # Ask for the administrator password upfront
-sudo -v
+if ! sudo -v; then
+  echo "Failed to obtain administrator privileges. Exiting."
+  exit 1
+fi
 
-# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+# Keep-alive: update existing `sudo` time stamp until script finishes
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 
 ###############################################################################
 # System

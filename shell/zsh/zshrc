@@ -35,50 +35,53 @@ setopt autoCd
 setopt globDots
 
 # Create Aliases
-alias ls='exa'
-alias lsh='ls -lAd .*' #Show ONLY hidden files in the current directory
-alias hid='ls -lAd .*'
-alias exa='exa -laFh --git'
-alias trail='<<<${(F)path}'
-alias ftrail='<<<${(F)fpath}'
-alias mkdir='mkdir -p'
-alias rm=trash
-alias man=batman
-alias bbd='brew bundle dump --force --describe'
+alias ls='exa' # List files and directories with enhanced formatting
+alias lsh='ls -lAd .*' # Show ONLY hidden files in the current directory
+alias hid='ls -lAd .*' # Alias for lsh
+alias exa='exa -laFh --git' # List files and directories with enhanced formatting (including Git status)
+alias trail='<<<${(F)path}' # Show the contents of the $path array
+alias ftrail='<<<${(F)fpath}' # Show the contents of the $fpath array
+alias mkdir='mkdir -p' # Create directories (including parent directories if needed)
+alias rm='trash' # Move files to the trash instead of deleting permanently
+alias man='batman' # Use batman as the man page viewer
+alias bbd='brew bundle dump --force --describe' # Dump the list of installed Homebrew packages to a Brewfile
+
 # Load history into shell (shareHistory alternative)
-alias lh='fc -RI; echo "loaded and showing..."; history;'
-alias cd..='cd ..'
-alias cd.....='cd ../../'
-alias up='cd ../'
-alias c='clear'
-alias h='history'
+alias lh='fc -RI; echo "loaded and showing..."; history;' # Load and display the command history
 
-alias zshreload="source ~/.zshrc"
-alias zshconfig="mate ~/.zshrc"
-alias ohmyzsh="mate ~/.oh-my-zsh"
+alias cd..='cd ..' # Shortcut for "cd .."
+alias cd.....='cd ../../' # Shortcut for "cd ../../"
+alias up='cd ../' # Shortcut for "cd ../"
+alias c='clear' # Shortcut for "clear"
+alias h='history' # Shortcut for "history"
 
-# apache
-alias ap2start='sudo service apache2 start'
-alias ap2restart='sudo service apache2 restart'
-alias ap2stop='sudo service apache2 stop'
+alias zshreload='source ~/.zshrc' # Reload the .zshrc file
+alias zshconfig='mate ~/.zshrc' # Open .zshrc file in TextMate editor
+alias ohmyzsh='mate ~/.oh-my-zsh' # Open oh-my-zsh installation directory in TextMate editor
+
+# Apache
+alias ap2start='sudo service apache2 start' # Start Apache service
+alias ap2restart='sudo service apache2 restart' # Restart Apache service
+alias ap2stop='sudo service apache2 stop' # Stop Apache service
 
 # Git Commands
-alias g='git'
-alias gst='git status'
+alias g='git' # Shortcut for "git"
+alias gst='git status' # Shortcut for "git status"
 
 # Goto the root of the (git) directory.
-alias groot='echo "I am Groot."; cd "$(git rev-parse --show-toplevel)"'
+alias groot='echo "I am Groot."; cd "$(git rev-parse --show-toplevel)"' # Go to the root directory of the Git repository
 
 # Enable aliases to be sudo'ed
-alias sudo=' sudo '
+alias sudo='sudo' # Enable aliases to be used with sudo
 
-alias cask='brew cask'
+alias cask='brew cask' # Shortcut for "brew cask"
 
 # Recursively remove .DS_Store files
-alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"
+alias cleanupds='find . -type f -name "*.DS_Store" -ls -delete' # Remove all .DS_Store files recursively
 
-#source ~/.aliases # Source some extra files
-#source ~/.functions
+# Source extra files
+# source ~/.aliases
+# source ~/.functions
 
 # Add Locations to $path Array
 typeset -U path
@@ -92,8 +95,8 @@ path=(
 # Use ZSH Plugins
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-# source antidote
-source <(antidote init)
-antidote bundle < "$DOTFILES/antidote_plugins"
-antidote update
-antidote load
+# Source antidote
+source <(antidote init) # Initialize antidote shell extension
+antidote bundle < "$DOTFILES/antidote_plugins" # Load bundled antidote plugins
+antidote update # Update antidote plugins
+antidote load # Load antidote plugins

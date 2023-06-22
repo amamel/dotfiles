@@ -1,21 +1,21 @@
-#Various aliases for all shells
-alias lsr='ls -ltr'
-alias lsf='ls -f'
-alias cls='clear' #DOS-ism i'll never be able to unlearn
-alias t='task'
+# Various aliases for all shells
+alias lsr='ls -ltr' # List files and directories in long format, sorted by modification time (descending)
+alias lsf='ls -f' # List files and directories without sorting
+alias cls='clear' # DOS-ism, clear the terminal screen
+alias t='task' # Shortcut for the 'task' command
 
-#Colors for grep
-alias grep='grep --color=auto'
+# Colors for grep
+alias grep='grep --color=auto' # Enable color highlighting for grep
 
-#Squelch that annoying login banner on SSH
-alias ssh='ssh -q'
+# Squelch that annoying login banner on SSH
+alias ssh='ssh -q' # Quiet mode for SSH
 
-#Spelling fixes (which are always tranposing the last two letters for some reason..)
-alias grpe='grep'
-alias sl='ls'
-alias gti='git'
+# Spelling fixes (which are always transposing the last two letters for some reason...)
+alias grpe='grep' # Alias for 'grep'
+alias sl='ls' # Alias for 'ls'
+alias gti='git' # Alias for 'git'
 
-#Shell-specific stuff
+# Shell-specific stuff
 case $SHELL in
   *bash* )
     alias resource='source ~/.bash_profile';;
@@ -23,7 +23,7 @@ case $SHELL in
     alias resource='source ~/.zshrc';;
 esac
 
-#Compress and encrypt a file or directory
+# Compress and encrypt a file or directory
 function etar(){
-tar -czv "$@" | gpg --cipher-algo AES256 --force-mdc -c -o "$@".tgz.gpg
+  tar -czv "$@" | gpg --cipher-algo AES256 --force-mdc -c -o "$@".tgz.gpg
 }
