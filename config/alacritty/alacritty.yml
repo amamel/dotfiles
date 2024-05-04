@@ -1,133 +1,115 @@
-# Configuration for Alacritty, the GPU enhanced terminal emulator.
+# Alacritty configuration
+#
+# Configuration for Alacritty with sensible defaults, the GPU enhanced terminal emulator.
 
 # Setup term for programs to be able to use it
 env:
   TERM: alacritty
 
-window:
-  # Spread additional padding evenly around the terminal content.
-  dynamic_padding: true
-
-  # Startup Mode (changes require restart)
-  startup_mode: Fullscreen
-
 # Font configuration
 font:
-  # Normal font face - Also used to draw glyphs on tmux & VIM
-  # NOTE: You may use any font you'd like but make sure the normal fonts
-  # support ligatures/glyphs. That's used by tmux & VIM to provide a better
-  # UI for powerline & tmux bottom bar.
+  # Normal font settings
   normal:
-    # Font name
-    family: Operator Mono Lig
-    # Font face
-    style: Book
-
-  # Bold font face
-  bold:
-    family: Operator Mono
+    family: BerkeleyMono
     style: Medium
-
-  # Italic font face
+  # Bold font settings
+  bold:
+    family: BerkeleyMono
+    style: Bold
+  # Italic font settings
   italic:
-    family: Operator Mono
-    style: Book Italic
-
-  # Bold italic font face
-  # Note: Since i don't have a font italic version of this font, I just specified
-  # italic & it just works. You may specifiy the bold italic version if it exists
-  # for your font
+    family: BerkeleyMono
+    style: Italic
+  # Bold Italic font settings
   bold_italic:
-    family: Operator Mono
-    style: Bold Italic
+    family: BerkeleyMono
+    style: BoldItalic
+# Font size
+font_size: 16.0
 
-  # Font size
-  size: 20.0
-
-  # Offset is the extra space around each character. `offset.y` can be thought of
-  # as modifying the line spacing, and `offset.x` as modifying the letter spacing
-  # I've given in 14 spacing which fits really well with my fonts, you may change it
-  # to your convenience but make sure to adjust 'glyph_offset' appropriately post that
-  offset:
-   x: 0
-   y: 15
-
-  # Note: This requires RESTART
-  # By default when you change the offset above you'll see an issue, where the texts are bottom
-  # aligned with the cursor, this is to make sure they center align.
-  # This offset should usually be 1/2 of the above offset-y being set.
-  glyph_offset:
-   x: 0
-   # Keeping this as half of offset to vertically align the text in cursor
-   y: 7
+# Offset for character spacing is the extra space around each character. `offset.y`
+# can be thought of as modifying the line spacing, and `offset.x` as modifying the
+# letter spacing I've given in 14 spacing which fits really well with my fonts, you
+# may change it to your convenience but make sure to adjust 'glyph_offset' appropriately post that
+offset:
+  x: 0
+  y: 15
 
   # Better font rendering for mac
   use_thin_strokes: true
 
-selection:
-  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+# Theme configuration
+colors:
+  # Default colors
+  primary:
+    background: '0x1e1e1e'
+    foreground: '0xe0e0e0'
 
+  # Normal colors
+  normal:
+    black: '0x000000'
+    red: '0xff5370'
+    green: '0xc3e88d'
+    yellow: '0xffcb6b'
+    blue: '0x82aaff'
+    magenta: '0xc792ea'
+    cyan: '0x89ddff'
+    white: '0xeeeeee'
+
+  # Bright colors
+  bright:
+    black: '0x666666'
+    red: '0xff5370'
+    green: '0xc3e88d'
+    yellow: '0xffcb6b'
+    blue: '0x82aaff'
+    magenta: '0xc792ea'
+    cyan: '0x89ddff'
+    white: '0xffffff'
+
+# Window settings
+window:
+  padding:
+    x: 16
+    y: 16
+  class:
+    instance: Alacritty
+    general: Alacritty
+  opacity: 1  # Adjust window opacity as needed (0 = fully transparent, 1 = fully opaque)
+
+# Scrolling settings
+scrolling:
+  history: 10000  # Maximum lines of scrollback history
+  multiplier: 3   # Number of lines to scroll with each scroll action
+
+# Selection
+selection:
   # When set to `true`, selected text will be copied to the primary clipboard.
   save_to_clipboard: true
+
+# Key bindings
+# A great reference: https://arslan.io/2018/02/05/gpu-accelerated-terminal-alacritty/#make-alacritty-feel-like-iterm2
+key_bindings:
+  # Scroll up one page
+  - { key: PageUp,   mods: Control, action: ScrollPageUp }
+  # Scroll down one page
+  - { key: PageDown, mods: Control, action: ScrollPageDown }
+  # Paste from clipboard
+  - { key: V, mods: Control|Shift, action: Paste }
+  # Copy to clipboard
+  - { key: C, mods: Control|Shift, action: Copy }
+
+# Allow applications to change window title
+allow_change_title: true
 
 # Live config reload (changes require restart)
 live_config_reload: true
 
-# Shell
-#
-# You can set `shell.program` to the path of your favorite shell, e.g.
-# `/bin/fish`. Entries in `shell.args` are passed unmodified as arguments to the
-# shell.
-#
-# Default:
-#   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
-#   - (Windows) powershell
+# Shell settings
 shell:
- program: /bin/zsh
- args:
-   - -l
-   - -c
-   - "tmux attach || tmux"
-
-# Setup some amazing custom key bindings here - Best thing is you can setup key bindings
-# using Mac's 'command' to control your tmux.
-# A great reference: https://arslan.io/2018/02/05/gpu-accelerated-terminal-alacritty/#make-alacritty-feel-like-iterm2
-key_bindings:
-  # Use command + [ - to go to previous tmux window
-  - { key: LBracket, mods: Command, chars: "\x5c\x70" }
-  # Use command + ] - to go to previous tmux window
-  - { key: RBracket, mods: Command, chars: "\x5c\x6e" }
-  # ctrl-^ doesn't work in some terminals like alacritty
-  - { key: Key6, mods: Control, chars: "\x1e" }
-
-
-# Colors (Gruvbox dark)
-colors:
-  # Default colors
-  primary:
-    # hard contrast: background = '#1d2021'
-    background: '#282828'
-    # soft contrast: background = '#32302f'
-    foreground: '#ebdbb2'
-
-  # Normal colors
-  normal:
-    black:   '#282828'
-    red:     '#cc241d'
-    green:   '#98971a'
-    yellow:  '#d79921'
-    blue:    '#458588'
-    magenta: '#b16286'
-    cyan:    '#689d6a'
-    white:   '#a89984'
-
-  # Bright colors
-  bright:
-    black:   '#928374'
-    red:     '#fb4934'
-    green:   '#b8bb26'
-    yellow:  '#fabd2f'
-    blue:    '#83a598'
-    magenta: '#d3869b'
-    cyan:    '#8ec07c'
-    white:   '#ebdbb2'
+  program: /bin/zsh
+  args:
+  # Start tmux if available
+  - -l
+  - -c
+  - "tmux attach || tmux"
