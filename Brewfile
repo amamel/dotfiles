@@ -19,6 +19,7 @@ brew "broot"              # Interactive file manager
 brew "calcurse"           # Text-based calendar and scheduling application
 brew "chkrootkit"         # Rootkit detector
 brew "cointop"            # Interactive cryptocurrency price viewer
+brew "composer"		  # Dependency Manager for PHP
 brew "coreutils"          # GNU Core Utilities
 brew "ctop"               # Top-like container monitoring tool
 brew "ddgr"               # DuckDuckGo from the terminal
@@ -28,6 +29,7 @@ brew "diff-so-fancy"      # Git diff highlighter
 brew "elinks"             # Text-based web browser
 brew "exa"                # Modern replacement for ls
 brew "fd"                 # Simple, fast, and user-friendly find replacement
+brew "ffmpeg"		  # Play, record, convert, and stream audio and video
 brew "findutils"          # Collection of GNU find, xargs, and locate
 brew "fzf"                # Fuzzy finder for the command-line
 brew "gh"                 # GitHub CLI
@@ -85,75 +87,34 @@ brew "zsh"                # Zsh shell
 brew "zsh-completions"    # Additional completions for Zsh
 
 # Fonts
-cask "font-atkinson-hyperlegible"            # Atkinson Hyperlegible font
-cask "font-cascadia-code"                    # Cascadia Code font
-cask "font-fira-code"                        # Fira Code font
-cask "font-inconsolata-dz"                   # Inconsolata DZ font
-cask "font-inconsolata-dz-for-powerline"     # Inconsolata DZ font for Powerline
-cask "font-inconsolata-for-powerline"        # Inconsolata font for Powerline
-cask "font-inconsolata-g"                    # Inconsolata G font
-cask "font-inconsolata-g-for-powerline"      # Inconsolata G font for Powerline
-cask "font-jetbrains-mono"                   # JetBrains Mono font
-cask "font-jetbrains-mono-nerd-font"         # JetBrains Mono Nerd Font
-cask "font-open-sans"                        # Open Sans font
-cask "font-open-sans-condensed"              # Open Sans Condensed font
-cask "font-roboto-mono-nerd-font"            # Roboto Mono Nerd Font
-cask "font-source-code-pro"                  # Source Code Pro font
+cask "font-atkinson-hyperlegible"                # Atkinson Hyperlegible font
+cask "font-cascadia-code"                        # Cascadia Code font
+cask "font-fira-code"                            # Fira Code font
+cask "font-hack-nerd-font"                       # Nerd Fonts - Hack font
+cask "font-inconsolata-dz"                       # Inconsolata DZ font
+cask "font-inconsolata-dz-for-powerline"         # Inconsolata DZ font for Powerline
+cask "font-inconsolata-for-powerline"            # Inconsolata font for Powerline
+cask "font-inconsolata-g"                        # Inconsolata G font
+cask "font-inconsolata-g-for-powerline"          # Inconsolata G font for Powerline
+cask "font-jetbrains-mono"                       # JetBrains Mono font
+cask "font-jetbrains-mono-nerd-font"             # JetBrains Mono Nerd Font
+cask "font-open-sans"                            # Open Sans font
+cask "font-open-sans-condensed"                  # Open Sans Condensed font
+cask "font-roboto-mono-for-powerline"		 # Roboto Mono for Powerline
+cask "font-roboto-mono-nerd-font"                # Roboto Mono Nerd Font
+cask "font-sf-compact"				 # SanFrancisco Compact
+cask "font-sf-mono"				 # SanFrancisco Mono
+cask "font-sf-mono-for-powerline"		 # SanFrancisco for Powerline
+cask "font-sf-pro"			         # SanFrancisco Pro
+cask "font-source-code-pro"                      # Source Code Pro font
 
-
-
-# Extras (uncomment as needed)
-#cask "adobe-creative-cloud"                  # Adobe Creative Cloud suite
-#cask "adobe-digital-editions"                # E-book reader software
-#cask "adobe-dng-converter"                   # Adobe DNG Converter
-#cask "android-file-transfer"                 # Android file transfer utility
-#cask "anki"                                  # Flashcard program
-#cask "bartender"                             # Menu bar organizer
-#cask "battle-net"                            # Blizzard Battle.net gaming platform
-#cask "calibre"                               # E-book management
-#cask "cityofzion-neon"                       # NEO blockchain wallet
-#cask "discord"                               # Voice, video, and text communication platform
-#cask "dropbox"                               # File hosting service
-#cask "exodus"                                # Cryptocurrency wallet
-#cask "firecamp"                              # Collaboration platform for APIs
-#cask "firefox"                               # Web browser
-#cask "fontforge"                             # Font editor
-#cask "franz"                                 # Messaging app for WhatsApp, Slack, and more
-#cask "gimp"                                  # GNU Image Manipulation Program
-#cask "google-backup-and-sync"                # Google Drive and Photos sync
-#cask "google-chrome"                         # Web browser
-#cask "handbrake"                             # Open-source video transcoder
-#cask "imageoptim"                            # Image optimizer
-#cask "insomnia"                              # API client
-#cask "iterm2"                                # Terminal emulator
-#cask "kap"                                   # Screen recorder
-#cask "kdiff3"                                # File and directory diff and merge tool
-#cask "kindle"                                # E-book reader
-#cask "lastpass"                              # Password manager
-#cask "microsoft-edge"                        # Web browser
-#cask "microsoft-office"                      # Office suite
-#cask "notion"                                # Note-taking and collaboration tool
-#cask "obs"                                   # Live streaming and recording software
-#cask "postman"                               # API development and testing
-#cask "sequel-pro"                            # MySQL database management tool
-#cask "slack"                                 # Collaboration hub
-#cask "spotify"                               # Music streaming service
-#cask "steam"                                 # Gaming platform
-#cask "sublime-text"                          # Text editor
-#cask "teamviewer"                            # Remote control and desktop sharing software
-#cask "transmit"                              # FTP client
-#cask "visual-studio-code"                    # Source code editor
-#cask "vlc"                                   # Media player
-#cask "whatsapp"                              # Messaging app
-#cask "zoom"                                  # Video conferencing and messaging platform
-
-# Work Essentials
-cask "alacritty"                     # GPU-accelerated terminal emulator
+# Work Machine
+#cask "adobe-creative-cloud"         # Adobe Creative Cloud suite
 cask "alfred"                        # Productivity app for macOS
 cask "arduino-nightly"               # Open-source electronics prototyping platform
-cask "arq5"                          # Backup and data management app
 cask "automute"                      # Automatically mute your microphone on system sleep
-cask "balenaetcher"                  # Tool for flashing OS images to SD cards and USB drives
+cask "bartender"                     # Menu bar organizer
+cask "basecamp"			     # All-In-One Toolkit for Working Remotely
 cask "brave-browser-nightly"         # Web browser focused on privacy and speed (Nightly version)
 cask "caffeine"                      # Prevents your Mac from going to sleep
 cask "cheatsheet"                    # Display keyboard shortcuts on-screen
@@ -165,10 +126,12 @@ cask "docker-toolbox"                # Legacy version of Docker tools
 cask "dotnet-sdk"                    # .NET software development kit
 cask "dozer"                         # Menu bar app to hide and reveal system menu icons
 cask "figma"                         # Collaborative interface design tool
+cask "firefox"                       # Web browser
 cask "firefox-nightly"               # Web browser by Mozilla (Nightly version)
 cask "flutter"                       # UI toolkit for building natively compiled applications
 cask "flux"                          # Adjusts your computer's display to adapt to the time of day
 cask "github"                        # Version control platform and collaboration tool
+cask "google-chrome"                 # Web browser by Google
 cask "google-chrome-canary"          # Web browser by Google (Canary version)
 cask "gpg-suite-nightly"             # Tools for secure communication and data encryption (Nightly version)
 cask "gyazo"                         # Screen capture and image sharing tool
@@ -178,19 +141,24 @@ cask "imagealpha"                    # Lossy PNG compressor
 cask "imageoptim"                    # Image optimization tool
 cask "insomnia"                      # Cross-platform REST client
 cask "install-disk-creator"          # Tool for creating bootable macOS install disks
+#cask "iterm2"                       # Terminal emulator
 cask "iterm2-nightly"                # Terminal emulator for macOS (Nightly version)
+#cask "lastpass"                     # Password manager
 cask "licecap"                       # Create animated GIFs of your screen
 cask "local"                         # WordPress local development tool by Flywheel
 cask "macfuse"                       # Required for Veracrypt
 cask "macvim"                        # GUI for Vim text editor
+#cask "microsoft-edge"               # Web browser
+#cask "microsoft-office"             # Office suite
 cask "micro-snitch"                  # Monitor and control microphone and camera usage
+cask "qmk-toolbox"					 # Toolbox companion for QMK Firmware
 cask "raspberry-pi-imager"           # Tool for easily installing Raspberry Pi OS images
 cask "sequel-pro"                    # MySQL/MariaDB database management tool
+#cask "slack"                        # Collaboration hub
 cask "shortcat"                      # Keyboard productivity app
 cask "shottr"                        # Screenshot and annotation tool
 cask "spectacle"                     # Window manager that allows you to organize your windows with ease
 cask "spotify"                       # Music streaming service
-cask "sublime-text-dev"              # Text editor for code, markup, and prose (Dev version)
 cask "thonny"                        # Python IDE for beginners
 cask "transmit"                      # File transfer client
 cask "utm"                           # Virtual machines UI using QEMU
@@ -198,30 +166,62 @@ cask "visual-studio-code"            # Source code editor developed by Microsoft
 cask "visual-studio-code-insiders"   # Source code editor developed by Microsoft (Insiders version)
 cask "xld"                           # Digital audio extraction tool
 cask "yubico-authenticator"          # Authentication app for Yubico security keys
+#cask "zoom"                         # Video conferencing and messaging platform
+
+# Extras (uncomment as needed)
+#cask "adobe-digital-editions"                # E-book reader software
+#cask "adobe-dng-converter"                   # Adobe DNG Converter
+#cask "android-file-transfer"                 # Android file transfer utility
+#cask "anki"                                  # Flashcard program
+#cask "arq7"                          	      # Backup and data management app
+#cask "balenaetcher"                  	      # Tool for flashing OS images to SD cards and USB drives
+#cask "battle-net"                            # Blizzard Battle.net gaming platform
+#cask "calibre"                               # E-book management
+#cask "cityofzion-neon"                       # NEO blockchain wallet
+#cask "discord"                               # Voice, video, and text communication platform
+#cask "dropbox"                               # File hosting service
+#cask "exodus"                                # Cryptocurrency wallet
+#cask "firecamp"                              # Collaboration platform for APIs
+#cask "fontforge"                             # Font editor
+#cask "franz"                                 # Messaging app for WhatsApp, Slack, and more
+#cask "gimp"                                  # GNU Image Manipulation Program
+#cask "google-backup-and-sync"                # Google Drive and Photos sync
+#cask "handbrake"                             # Open-source video transcoder
+#cask "insomnia"                              # API client
+#cask "kap"                                   # Screen recorder
+#cask "kdiff3"                                # File and directory diff and merge tool
+#cask "notion"                                # Note-taking and collaboration tool
+#cask "obs"                                   # Live streaming and recording software
+#cask "postman"                               # API development and testing
+#cask "plexamp"				      # Plex Music player focusing on visuals
+#cask "steam"                                 # Gaming platform
+#cask "teamviewer"                            # Remote control and desktop sharing software
+#cask "vlc"                                   # Media player
 
 
-# QuickLook plugins
-cask "betterzipql"            # QuickLook generator plugin for BetterZip archives
-cask "epsqlplugin"            # QuickLook plugin for SQL files, allows previewing the content of SQL files
-cask "epub-quicklook"         # QuickLook plugin for EPUB files, enables previewing EPUB ebook content
-cask "qlcolorcode"            # QuickLook plugin for source code files, provides syntax highlighting for various programming languages
-cask "qlgradle"               # QuickLook plugin for Gradle build files, allows previewing the content of Gradle files
-cask "qlimagesize"            # QuickLook plugin for image files, displays the image dimensions and file size
-cask "qlmarkdown"             # QuickLook plugin for Markdown files, enables previewing Markdown formatted documents
-cask "qlmobi"                 # QuickLook plugin for MOBI files, allows previewing content of MOBI ebook files
-cask "qlmoviepreview"         # QuickLook plugin for video files, generates a movie preview thumbnail
-cask "qlplayground"           # QuickLook plugin for Swift playground files, allows previewing Swift code in playgrounds
-cask "qlstephen"              # QuickLook plugin for plain text files, provides plain text preview
-cask "qlswift"                # QuickLook plugin for Swift source code files, provides syntax highlighting for Swift
-cask "qltorrent"              # QuickLook plugin for BitTorrent files, allows previewing the content of torrent files
-cask "qlvideo"                # QuickLook plugin for video files, allows previewing video content
-cask "qlwoff"                 # QuickLook plugin for WOFF font files, allows previewing WOFF fonts
-cask "quickjson"              # QuickLook plugin for JSON files, enables previewing JSON data
-cask "quicklook-json"         # QuickLook plugin for JSON files, allows previewing JSON data
-cask "quicklookase"           # QuickLook plugin for ASE color swatch files, enables previewing ASE color swatches
-cask "quicknfo"               # QuickLook plugin for NFO files, allows previewing the content of NFO files
-cask "syntax-highlight"       # QuickLook plugin for code files, provides syntax highlighting for various programming languages
-cask "webpquicklook"          # QuickLook plugin for WebP image files, allows previewing WebP images
+
+# QuickLook plugins	      # QuickLook plugin for...
+cask "betterzipql"            # BetterZip archives
+cask "epsqlplugin"            # SQL files, allows previewing the content of SQL files
+cask "epub-quicklook"         # EPUB files, enables previewing EPUB ebook content
+cask "qlcolorcode"            # source code files, provides syntax highlighting for various programming languages
+cask "qlgradle"               # Gradle build files, allows previewing the content of Gradle files
+cask "qlimagesize"            # image files, displays the image dimensions and file size
+cask "qlmarkdown"             # Markdown files, enables previewing Markdown formatted documents
+cask "qlmobi"                 # MOBI files, allows previewing content of MOBI ebook files
+cask "qlmoviepreview"         # video files, generates a movie preview thumbnail
+cask "qlplayground"           # Swift playground files, allows previewing Swift code in playgrounds
+cask "qlstephen"              # plain text files, provides plain text preview
+cask "qlswift"                # Swift source code files, provides syntax highlighting for Swift
+cask "qltorrent"              # BitTorrent files, allows previewing the content of torrent files
+cask "qlvideo"                # video files, allows previewing video content
+cask "qlwoff"                 # WOFF font files, allows previewing WOFF fonts
+cask "quickjson"              # JSON files, enables previewing JSON data
+cask "quicklook-json"         # JSON files, allows previewing JSON data
+cask "quicklookase"           # ASE color swatch files, enables previewing ASE color swatches
+cask "quicknfo"               # NFO files, allows previewing the content of NFO files
+cask "syntax-highlight"       # code files, provides syntax highlighting for various programming languages
+cask "webpquicklook"          # webP image files, allows previewing WebP images
 
 
 # Mac App Store Applications (Disabled by default)
