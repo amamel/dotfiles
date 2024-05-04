@@ -1,57 +1,72 @@
+# Default options for tasks
 defaults:
   link:
-    relink: true
+    relink: true  # Recreate symlinks if they already exist
 
+# Files or directories to clean up before creating symlinks
 clean: ['~']
 
+# Additional symlinks
 link:
-  ~/.aliases: shell/aliases
-  ~/.bashrc: shell/bash/bashrc
-  ~/.bash_profile: shell/bash/bash_profile
-  ~/.editorconfig:
-  ~/.functions: shell/functions
-  ~/.mackup.cfg:
-  ~/.nanorc: shell/nanorc
-  ~/.zshrc:
-    path: zsh/zshrc
-    force: true
-  ~/.zshenv: shell/zsh/zshenv
-  ~/.oh-my-zsh: shell/zsh/oh-my-zsh
-  ~/.gitconfig:
-  ~/.gitignore:
-  ~/.rbenv:
-  ~/.tmux.conf: tmux/tmux.conf
-  ~/.vimrc: vim/vimrc
+  ~/.aliases: shell/aliases  # Symlink for aliases
+  ~/.bash_profile: shell/bash/bash_profile  # Symlink for Bash profile
+  ~/.bashrc: shell/bash/bashrc  # Symlink for Bash configuration
+  ~/.config/Code/User/keybindings.json: vscode/keybindings.json # VS Code keybindings
+  ~/.config/Code/User/settings.json: vscode/settings.json # VS Code Settings
+  ~/.config/neofetch: #Symlink for Neofetch configuration
+    home: .config/neofetch # Path to the Neofetch configuration directory
+    link: config/neofetch # Path to the Neofetch configuration file
+  ~/.config/nvim:  # Symlink for NeoVim configuration
+    home: .config/nvim  # Path to the NeoVim configuration directory
+    link: config/nvim/init.vim  # Path to the NeoVim configuration file
+  ~/.editorconfig: editorconfig  # Symlink for EditorConfig (default path without leading dot)
+  ~/.functions: shell/functions  # Symlink for shell functions
+  ~/.gitconfig: gitconfig  # Symlink for Git configuration (default path without leading dot)
+  ~/.gitignore: gitignore  # Symlink for Gitignore (default path without leading dot)
+  ~/.mackup.cfg: mackup.cfg  # Symlink for Mackup configuration (default path without leading dot)
+  ~/.nanorc: shell/nanorc  # Symlink for Nano configuration
+  ~/.oh-my-zsh: shell/zsh/oh-my-zsh  # Symlink for Oh-My-Zsh (Zsh framework)
+  ~/.rbenv: rbenv  # Symlink for rbenv (Ruby version manager) (default path without leading dot)
+  ~/.tmux.conf: tmux/tmux.conf  # Symlink for Tmux configuration (default path without leading dot)
+  ~/.vim:  # Symlink for Vim configuration
+    home: .vim  # Path to the Vim configuration directory
+    link: vim/vimrc  # Path to the Vim configuration file
+  ~/.vscode/extensions: vscode/extensions.json # VS Code Extensions List
+  ~/.zshenv: shell/zsh/zshenv  # Symlink for Zsh environment configuration
+  ~/.zshrc:  # Symlink for Zsh configuration
+    path: zsh/zshrc  # Path to Zsh configuration file
+    force: true  # Overwrite existing symlink if it exists
 
+
+
+# Directories to create
 create:
-  - ~/design
-  #- ~/downloads/audiob
-  #- ~/downloads/epub
-  #- ~/downloads/torrent
-  #- ~/downloads/tv
-  - ~/github
-  - ~/local sites
-  - ~/pictures/screenshots
-  - ~/vm
+  - ~/design  # Create design directory
+  - ~/github  # Create GitHub directory
+  - ~/local sites  # Create local sites directory
+  - ~/pictures/screenshots  # Create screenshots directory
+  - ~/sync  # Create sync directory
+  - ~/vm  # Create VM directory
 
+# Shell setup commands
 shell:
-  - command: ./scripts/1-setup_init.zsh
+  - command: ./scripts/1-setup_init.zsh  # Run setup script for initialization
+    stdin: true  # Pass stdin to the command
+    stdout: true  # Redirect stdout to the terminal
+    stderr: true  # Redirect stderr to the terminal
+  - command: ./scripts/2-setup_homebrew.zsh  # Run setup script for Homebrew
     stdin: true
     stdout: true
     stderr: true
-  - command: ./scripts/2-setup_homebrew.zsh
+  - command: ./scripts/3-setup_zsh.zsh  # Run setup script for Zsh
     stdin: true
     stdout: true
     stderr: true
-  - command: ./scripts/3-setup_zsh.zsh
+  - command: ./scripts/4-setup_node.zsh  # Run setup script for Node.js
     stdin: true
     stdout: true
     stderr: true
-  - command: ./scripts/4-setup_node.zsh
-    stdin: true
-    stdout: true
-    stderr: true
-  - command: ./scripts/5-setup_macos.zsh
+  - command: ./scripts/5-setup_macos.zsh  # Run setup script for macOS
     stdin: true
     stdout: true
     stderr: true
