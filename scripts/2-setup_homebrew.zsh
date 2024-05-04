@@ -29,7 +29,7 @@ brew upgrade
 echo "› Installing Mac App Store CLI..."
 brew install mas
 
-echo "› Pouring brews... Prost! This could take a while... Zum Wohl!"
+echo "› Pouring brews... (this could take a while)"
 brew bundle --verbose
 
 echo "› Cleaning up Homebrew..."
