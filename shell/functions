@@ -2,7 +2,7 @@ function determine_OS() {
     case "$OSTYPE" in
         solaris*) OS="SOLARIS" ;;
         darwin*)  OS="OSX" ;;
-        linux*)   OS="LINUX" ;;
+        debian*)  OS="DEBIAN" ;;
         bsd*)     OS="BSD" ;;
         msys*)    OS="WINDOWS" ;;
         *)        OS="unknown: $OSTYPE" ;;
@@ -48,13 +48,17 @@ function fix_ssh_permissions() {
 }
 
 function update() {
-    determine_OS()
+    determine_OS
     if [[ $OS == "OSX" ]]; then
         sudo softwareupdate -i -a
         brew upgrade
         brew update
         brew cleanup
-    elif [[ $OS == "LINUX" ]]; then
-        echo "OS is Linux. TODO"
+    elif [[ $OS == "DEBIAN" ]]; then
+        echo "OS is Debian Linux. Updating packages..."
+        sudo apt-get update
+        sudo apt-get upgrade -y
+        sudo apt-get autoremove -y
+        sudo apt-get autoclean
     fi
 }
